@@ -1,0 +1,390 @@
+body{
+    background: #F2EBC4;
+    margin:0;
+    user-select: none; /* Empêche la sélection de texte */
+}
+
+/* forme du haut */
+.svg-container {
+    position: fixed; /* Important pour contrôler la position */
+    width: 100%; /* Adapte le conteneur à la largeur de l'écran */
+    display: flex; /* Optionnel, pour centrer le contenu */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Cache les débordements */
+    z-index: -1; /* Place le conteneur en arrière-plan */
+}
+  
+  /* SVG responsive */
+.responsive-svg {
+    width: 100%; /* Adapte la largeur au conteneur */
+    height: auto; /* Maintient les proportions */
+}
+
+
+/* citron haut */
+.youcouleletop{
+    position: fixed;
+    top: -45%;
+    right: -15%;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    filter: blur(2px);
+    z-index: -1;
+    transform: rotate(-80deg);
+}
+
+/* citron milieu */
+.youcoulelemid {
+    position: fixed;
+    top: 55%; /* Monte le citron de 20% par rapport au haut de l'écran */
+    right: 70%; /* Le rapproche de 23% du bord droit */
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: -1;
+    transform: rotate(190deg);
+}
+
+/* citron gauche */
+.youcouleleleft {
+    position: fixed;
+    top: -20%;
+    right: 70%;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    filter: blur(1px);
+    z-index: -1;
+    transform: rotate(100deg); /* Rotation de 45 degrés */
+}
+
+
+/* Animation de gigotement youcoulele */
+.giggle-image {
+    width: 800px; /* Taille de l'image (modifiable selon besoin) */
+    animation: giggle 0.2s infinite; /* Applique l'animation */
+  }
+
+.giggle-image-mid {
+    width: 1000px; /* Taille de l'image (modifiable selon besoin) */
+    animation: giggle 0.2s infinite; /* Applique l'animation */
+}
+
+.giggle-image-left {
+    width: 400px; /* Taille de l'image (modifiable selon besoin) */
+    animation: giggle 0.2s infinite; /* Applique l'animation */
+}
+
+  
+  /* Définition de l'animation */
+@keyframes giggle {
+    0%, 100% {
+      transform: rotate(0deg); /* Position initiale */
+    }
+    25% {
+      transform: rotate(0deg); /* Rotation vers la gauche */
+    }
+    75% {
+      transform: rotate(0.5deg); /* Rotation vers la droite */
+    }
+}
+
+/* Conteneur principal */
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+/* Partie haute : titre et sous-titre */
+.haut-page {
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+.titre {
+    position: relative;
+    font-family: 'Luckiest Guy';
+    font-size: 70px; /* Taille du texte dynamique selon la taille de l'écran */
+    background: linear-gradient(90deg, #ab7500 30%, #F1D814 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Style pour le sous-titre h3 */
+.sous-titre {
+    color: #ab7500;
+    font-family: 'Mynerve';
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: -4%;
+}
+
+/* Style des boutons */
+.button-container button {
+    border: none;
+    color: #FFF;
+    font-family: 'Mynerve';
+    font-size: 25px;
+    cursor: pointer;
+    width: 280px;
+    height: 48px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ab7500 70%, #F1D814 100%);
+    margin-top: 55px;
+}
+
+/* Autres styles pour les textes, etc. */
+.text {
+    color: #ab7500;
+    font-family: 'Teachers';
+    font-size: 15px;
+}
+
+
+
+
+/* -----------PAGE CARDS.HTML-------------- */
+/* Style pour la carte de l'artiste */
+.card {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    background-color: rgba(138, 138, 138, 0.142);
+    border-radius: 28px;
+    background-blend-mode: hard-light;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    box-shadow: #3c3c3c36 0px 10px 10px;   
+}
+
+.artist-image {
+    width: 100%;
+    height: auto;
+    border-radius: 28px;
+}
+
+.artist-name {
+    font-family: 'Teachers';
+    margin-top: 10px;
+    font-size: 1.5rem;
+    
+}
+
+/* -------En plus Artist Detail---------*/
+.card p {
+    font-size: 1rem;
+    font-family: 'Teachers';
+    margin-top: 10px;
+    text-align: start;
+    color: #2e2e2e;
+}
+
+.card p strong {
+    color: #000;
+}
+/* ------------------------------------ */
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.circle-button {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #CEC48C;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: none;
+}
+
+.circle-button:hover {
+    transform: scale(1.1); /* Agrandit légèrement le bouton */
+}
+
+.circle-button img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.circle-button2 {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #CEC48C;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: none;
+}
+
+/* Style pour mettre le bouton home plus petit */
+.circle-button2 img{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.circle-button2:hover {
+    transform: scale(1.1); /* Agrandit légèrement le bouton */
+}
+
+
+
+
+
+/* -------------catalogue-------------- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 0.27fr); /* Par défaut, 3 colonnes */
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteneur pour les contrôles de la page */
+.catalog-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espacement entre le bouton et la barre de recherche */
+    margin: 20px 0; /* Espacement avec la grille */
+}   
+
+/* Conteneur de la barre de recherche */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Barre de recherche */
+#search-bar {
+    font-size: 1rem;
+    padding: 10px 40px 10px 15px; /* Ajuste le padding pour laisser de la place à l'icône */
+    border-radius: 25px; /* Bords arrondis */
+    width: 250px; /* Largeur de la barre */
+    max-width: 100%;
+    background: #CEC48C;
+    backdrop-filter: blur(2px);
+    border: none;  /* Pas de bordure solide */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);  /* Ombre subtile */
+    transition: width 0.3s ease-in-out, box-shadow 0.2s ease; /* Transition de la largeur et de l'ombre */
+    cursor: text; /* Change le curseur pour signaler la zone de texte */
+}
+
+/* Changer le style au focus */
+#search-bar:focus {
+    width: 350px;  /* Étendre la barre de recherche lors du focus */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Ombre plus marquée au focus */
+}
+
+/* Icône loupe */
+.search-icon {
+    position: absolute;
+    right: 10px; /* Position de l'icône à droite */
+    width: 20px; /* Largeur de l'image */
+    height: 20px; /* Hauteur de l'image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon img {
+    width: 100%; /* Ajuste l'image à la taille du conteneur */
+    height: 100%;
+    object-fit: cover; /* S'assure que l'image reste proportionnée */
+    pointer-events: none; /* Empêche les clics sur l'icône */
+}
+
+/* Suggestions */
+.suggestions {
+    position: absolute;
+    font-family: 'Teachers';
+    top: 100%;  /* Positionne juste en dessous de la barre de recherche */
+    left: 0;
+    width: 100%;  /* Faire en sorte que les suggestions occupent toute la largeur de la barre */
+    background: #CEC48C;  /* Fond de la suggestion similaire à la barre de recherche */
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);  /* Ombre portée subtile pour les suggestions */
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #b6b074;   
+}
+
+.suggestion-item:hover {
+    background-color: #b6b074; /* Changer la couleur au survol */
+}
+
+/* Cacher les suggestions si aucune entrée */
+.suggestions.hidden {
+    display: none;
+}
+
+
+@media (max-width:991px) {
+
+    /* --- Index --- */
+    .svg-container {    
+        width: 150%; /* Adapte le conteneur à la largeur de l'écran */
+    }
+    
+    .youcouleletop{
+        top: -20%;
+        right: -15%;
+    }
+
+    .youcoulelemid {
+        top: 60%;
+        right: 40%;
+    }
+
+    .youcouleleleft {
+        top: -20%;
+        right: 80%;
+    }
+
+
+    /* Animation de gigotement youcoulele */
+    .giggle-image {
+        width: 300px; /* Taille de l'image */
+    }
+
+    .titre {
+        font-size: 40px; /* Taille du texte dynamique selon la taille de l'écran */
+    }
+    
+    /* Style pour le sous-titre h3 */
+    .sous-titre {
+        font-size: 15px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+}
