@@ -228,20 +228,6 @@ func main() {
 			return
 		}
 
-		locations, err := Api.GetLocations(artist.LocationsURL)
-		if err != nil {
-			log.Printf("Erreur lors de la récupération des localisations : %v", err)
-			http.Error(w, "Erreur de récupération des localisations", http.StatusInternalServerError)
-			return
-		}
-
-		concertDates, err := Api.GetConcertDates(artist.ConcertDatesURL)
-		if err != nil {
-			log.Printf("Erreur lors de la récupération des dates de concert : %v", err)
-			http.Error(w, "Erreur de récupération des dates de concert", http.StatusInternalServerError)
-			return
-		}
-
 		relations, err := Api.GetRelations(artist.RelationsURL)
 		if err != nil {
 			log.Printf("Erreur lors de la récupération des relations : %v", err)
@@ -250,10 +236,8 @@ func main() {
 		}
 
 		pageData := PageData{
-			Artist:       artist,
-			Locations:    locations,
-			ConcertDates: concertDates,
-			Relations:    relations,
+			Artist:    artist,
+			Relations: relations,
 		}
 
 		tmpl, err := template.ParseFiles("templates/artist_detail_catalogue.html")
