@@ -49,6 +49,31 @@
             </div>
             
         </div>
+        <!-- Conteneur pour les options de filtrage -->
+        <div class="filter-container" id="filterContainer">
+            <form id="filterForm">
+                <label for="min">Min membres :</label>
+                <input type="number" id="min" name="min" min="1">
+                
+                <label for="max">Max membres :</label>
+                <input type="number" id="max" name="max" min="1">
+
+                <label for="startDate">Date de création (début) :</label>
+                <input type="date" id="startDate" name="startDate">
+        
+                <label for="endDate">Date de création (fin) :</label>
+                <input type="date" id="endDate" name="endDate">
+                <label for="firstAlbumStart">Date de premier album (min) :</label>
+                <input type="date" id="firstAlbumStart">
+
+                <label for="firstAlbumEnd">Date de premier album (max) :</label>
+                <input type="date" id="firstAlbumEnd">
+                <label for="concertLocation">Lieu du concert :</label>
+                <input type="text" id="concertLocation" placeholder="Ex: Paris">
+                
+                <button type="submit">Filtrer</button>
+            </form>
+        </div>
         
         <div class="catalog-grid">
             {{range .Artists}}
@@ -61,6 +86,15 @@
     </div>
 
     <script>
+        // Fonction pour afficher/masquer les options de filtrage
+        function toggleFilter() {
+            const filterContainer = document.getElementById('filterContainer');
+            if (filterContainer.style.display === 'none' || filterContainer.style.display === '') {
+                filterContainer.style.display = 'block';
+            } else {
+                filterContainer.style.display = 'none';
+            }
+        }
         // Afficher uniquement les suggestions sans filtrer les cartes
         function showSuggestions() {
             const searchInput = document.getElementById('search-bar').value.toLowerCase();
@@ -131,6 +165,64 @@
                 }
             });
         }
+        document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.catalog-grid .card');
+    const filterForm = document.getElementById("filterForm");
+
+    filterForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Empêche la soumission du formulaire
+
+        let min = document.getElementById("min").value.trim();
+        let max = document.getElementById("max").value.trim();
+        min = min ? parseInt(min) : null;
+        max = max ? parseInt(max) : null;
+
+        let startDate = document.getElementById("startDate").value;
+        let endDate = document.getElementById("endDate").value;
+        startDate = startDate ? new Date(startDate) : null;
+        endDate = endDate ? new Date(endDate) : null;
+
+        let firstAlbumStart = document.getElementById("firstAlbumStart").value;
+        let firstAlbumEnd = document.getElementById("firstAlbumEnd").value;
+        firstAlbumStart = firstAlbumStart ? new Date(firstAlbumStart) : null;
+        firstAlbumEnd = firstAlbumEnd ? new Date(firstAlbumEnd) : null;
+
+        let concertLocation = document.getElementById("concertLocation").value.trim().toLowerCase();
+        cards.forEach(card => {
+            const membersCount = parseInt(card.getAttribute('data-members'));
+            const creationDate = new Date(card.getAttribute('data-creation-date'));
+            const firstAlbumDate = new Date(card.getAttribute('data-first-album'));
+            const locations = card.getAttribute('data-locations').toLowerCase().split(',');
+
+
+            let displayCard = true;
+
+            if (min !== null && !isNaN(membersCount) && membersCount < min) {
+                displayCard = false;
+            }
+            if (max !== null && !isNaN(membersCount) && membersCount > max) {
+                displayCard = false;
+            }
+            if (startDate !== null && !isNaN(creationDate) && creationDate < startDate) {
+                displayCard = false;
+            }
+            if (endDate !== null && !isNaN(creationDate) && creationDate > endDate) {
+                displayCard = false;
+            }
+            if (firstAlbumStart !== null && !isNaN(firstAlbumDate) && firstAlbumDate < firstAlbumStart) {
+                displayCard = false;
+            }
+            if (firstAlbumEnd !== null && !isNaN(firstAlbumDate) && firstAlbumDate > firstAlbumEnd) {
+                displayCard = false;
+            }
+            if (concertLocation && !locations.some(loc => loc.includes(concertLocation))) {
+                displayCard = false;
+            }
+
+            card.style.display = displayCard ? 'block' : 'none';
+        });
+    });
+});
     </script>
 </body>
 </html>
