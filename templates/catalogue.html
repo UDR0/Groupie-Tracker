@@ -47,8 +47,14 @@
                 <span class="search-icon"><img src="static/img/chercher.png" alt=""></span>
                 <div id="suggestions" class="suggestions"></div>
             </div>
-            
+            <!-- Bouton pour afficher/masquer le filtre -->
+            <button class="circle-button2" id="toggleFilter">
+                <img src="static/img/parametres-curseurs.png" alt="">
+            </button>
         </div>
+
+        
+
         <!-- Conteneur pour les options de filtrage -->
         <div class="filter-container" id="filterContainer">
             <form id="filterForm">
@@ -223,6 +229,18 @@
         });
     });
 });
+
+// Cache le filtre au chargement de la page
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("filterContainer").style.display = "none";
+});
+
+// Ajoute un écouteur d'événement au bouton pour afficher/masquer le filtre
+document.getElementById("toggleFilter").addEventListener("click", function() {
+    const filterContainer = document.getElementById("filterContainer");
+    filterContainer.style.display = (filterContainer.style.display === "none" || filterContainer.style.display === "") ? "block" : "none";
+});
+
     </script>
 </body>
 </html>

@@ -278,7 +278,7 @@ body{
 /* Barre de recherche */
 #search-bar {
     font-size: 1rem;
-    padding: 10px 40px 10px 15px; /* Ajuste le padding pour laisser de la place à l'icône */
+    padding: 15px 40px 15px 15px; /* Ajuste le padding pour laisser de la place à l'icône */
     border-radius: 25px; /* Bords arrondis */
     width: 250px; /* Largeur de la barre */
     max-width: 100%;
@@ -355,6 +355,10 @@ body{
 
 .relation-list li {
     margin-bottom: 5px; /* Ajouter un peu d'espace entre les éléments de la liste */
+}
+
+#filterContainer {
+    display: none;
 }
 
 
